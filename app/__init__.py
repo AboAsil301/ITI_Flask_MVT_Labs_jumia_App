@@ -13,6 +13,8 @@ from app.models import  db
 # get blueprint
 from app.product import product_blueprint
 
+#import templates render
+from flask import render_template
 
 def create_app(config_name='dev'):
     app = Flask(__name__)
@@ -22,6 +24,11 @@ def create_app(config_name='dev'):
     app.config.from_object(current_App_Config)
     # initialize db
     db.init_app(app)
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('errors/page_not_found.html')
+
     # initialize routes
     # app.add_url_rule('/hello', view_func=say_hello)
     ## register blueprint in the application
