@@ -16,6 +16,9 @@ from app.product import product_blueprint
 #import templates render
 from flask import render_template
 
+# import migrations
+from flask_migrate import Migrate
+
 def create_app(config_name='dev'):
     app = Flask(__name__)
     # object of config class(DevelopmentConfig or ProductionConfig)from config.py base on config_name
@@ -25,6 +28,8 @@ def create_app(config_name='dev'):
     # initialize db
     db.init_app(app)
 
+    # initialize migrate object
+    migrate = Migrate(app, db)
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('errors/page_not_found.html')
