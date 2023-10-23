@@ -1,3 +1,4 @@
+# create new blueprint
 from flask import  Blueprint
-product_blueprint= Blueprint('products', __name__, url_prefix='/products/')
-from app.product import views
+categories_blueprint= Blueprint('products', __name__, url_prefix='/categories/')
+from app.categories import views

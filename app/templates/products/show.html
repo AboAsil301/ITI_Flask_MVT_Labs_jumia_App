@@ -7,24 +7,31 @@
       <!-- * Images * -->
       <div class="col-lg-6 row">
         <div class="col-4 text-center">
-            {% if product.image %}
+<!--            {% if product.image %}-->
+<!--          <img src="{{ url_for('static', filename='images/product/'+product.image)}}" class="mb-2" width="96" alt="Product Image">-->
+<!--          <img src="{{ url_for('static', filename='images/product/'+product.image)}}" class="mb-2" width="96" alt="Product Image">-->
+<!--          <img src="{{ url_for('static', filename='images/product/'+product.image)}}" class="mb-2" width="96" alt="Product Image">-->
+<!--            {% else %}-->
+<!--          <img src="{{ url_for('static', filename='images/product/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">-->
+<!--          <img src="{{ url_for('static', filename='images/product/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">-->
+<!--          <img src="{{ url_for('static', filename='images/product/images/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">-->
+<!--            {% endif %}-->
 
-          <img src="{{ url_for('static', filename='products/images/'+product.image)}}" class="mb-2" width="96" alt="Product Image">
-          <img src="{{ url_for('static', filename='products/images/'+product.image)}}" class="mb-2" width="96" alt="Product Image">
-          <img src="{{ url_for('static', filename='products/images/'+product.image)}}" class="mb-2" width="96" alt="Product Image">
-{% else %}
-          <img src="{{ url_for('static', filename='products/images/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">
-          <img src="{{ url_for('static', filename='products/images/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">
-          <img src="{{ url_for('static', filename='products/images/placeholder.png')}}" class="mb-2" width="96" alt="Product Image">
-            {% endif %}
+
+          <img src="{{product.get_image_url}}" class="mb-2" width="96" alt="Product Image">
+          <img src="{{product.get_image_url}}" class="mb-2" width="96" alt="Product Image">
+          <img src="{{product.get_image_url}}" class="mb-2" width="96" alt="Product Image">
 
         </div>
         <div class="col-8 main-image h-50 text-lg-start text-center">
-            {% if product.image %}
-                 <img src="{{ url_for('static', filename='products/images/'+product.image)}}" width="300" alt="Product Image">
-            {% else %}
-                 <img src="{{ url_for('static', filename='products/images/placeholder.png')}}" width="300" alt="Product Image">
-            {% endif %}
+<!--            {% if product.image %}-->
+<!--                 <img src="{{ url_for('static', filename='images/product/'+product.image)}}" width="300" alt="Product Image">-->
+<!--            {% else %}-->
+<!--                 <img src="{{ url_for('static', filename='images/product/images/placeholder.png')}}" width="300" alt="Product Image">-->
+<!--            {% endif %}-->
+
+          <img src="{{product.get_image_url}}" width="300" alt="Product Image">
+
         </div>
       </div>
       <!--  Details -->
@@ -35,8 +42,13 @@
           <h5>Description</h5>
           <p>{{product.description}}</p>
         </div>
-        <hr>
-        <p>$ {{product.price}}</p>
+        <hr />
+          <div>
+          <h5>Category</h5>
+          <p>{{product.category_id}}</p>
+        </div>
+        <hr />
+        <p> {{product.price}} $</p>
         <hr />
         {% if product.instock == 0   %}
           <span class="badge bg-danger p-2">Out Of Stock</span>

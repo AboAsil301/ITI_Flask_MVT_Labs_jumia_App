@@ -12,9 +12,9 @@
       {% for product in products %}
       <div class="card border-0 mb-3 ">
             {% if product.image %}
-              <img src="{{ url_for('static', filename='products/images/' + product.image) }}" class="card-img-top rounded-3 mb-2" height="370">
+              <img src="{{ url_for('static', filename='images/product/' + product.image) }}" class="card-img-top rounded-3 mb-2" height="370">
             {% else %}
-              <img src="{{ url_for('static', filename='products/images/placeholder.png') }}" class="card-img-top rounded-3 mb-2" height="370">
+              <img src="{{ url_for('static', filename='images/product/placeholder.png') }}" class="card-img-top rounded-3 mb-2" height="370">
             {% endif %}
         <div class="card-body text-center p-0 ">
             <h5 class="card-title">{{product.name}}</h5>
