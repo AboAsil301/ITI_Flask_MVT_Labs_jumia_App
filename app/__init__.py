@@ -7,6 +7,12 @@ from app.config import projectConfig as AppConfig
 # get db object
 from app.models import  db
 
+# get views
+# from app.product.views import say_hello
+
+# get blueprint
+from app.product import product_blueprint
+
 
 def create_app(config_name='dev'):
     app = Flask(__name__)
@@ -16,4 +22,8 @@ def create_app(config_name='dev'):
     app.config.from_object(current_App_Config)
     # initialize db
     db.init_app(app)
+    # initialize routes
+    # app.add_url_rule('/hello', view_func=say_hello)
+    ## register blueprint in the application
+    app.register_blueprint(product_blueprint)
     return app
