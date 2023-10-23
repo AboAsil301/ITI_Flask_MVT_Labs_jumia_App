@@ -78,13 +78,13 @@ def allowed_image(filename):
 
 @product_blueprint.route('/product/<int:id>', endpoint='show')
 def product_show(id):
-    product = Product.query.get_or_404(id)
+    product = Product.get_specific_product(id)
     return render_template('products/show.html', product=product)
 
 
 @product_blueprint.route('edit/<int:id>', endpoint='edit')
 def product_edit(id):
-    product = Product.query.get_or_404(id)
+    product = Product.get_specific_product(id)
     return render_template('products/edit.html', product=product)
 
 

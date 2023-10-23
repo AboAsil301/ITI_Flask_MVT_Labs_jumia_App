@@ -60,6 +60,9 @@ class Product(db.Model):
     def get_delete_url(self):
         return  url_for('products.delete', id= self.id)
 
+    @property
+    def get_edit_url(self):
+        return  url_for('products.edit', id= self.id)
 
 
 
