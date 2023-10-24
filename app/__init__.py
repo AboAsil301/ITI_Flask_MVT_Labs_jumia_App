@@ -12,6 +12,7 @@ from app.models import  db
 
 # get blueprint
 from app.product import product_blueprint
+from app.categories import categories_blueprint
 
 #import templates render
 from flask import render_template
@@ -38,4 +39,5 @@ def create_app(config_name='dev'):
     # app.add_url_rule('/hello', view_func=say_hello)
     ## register blueprint in the application
     app.register_blueprint(product_blueprint)
+    app.register_blueprint(categories_blueprint)
     return app

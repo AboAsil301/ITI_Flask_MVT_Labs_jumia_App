@@ -18,6 +18,16 @@
     <label for="productPrice" class="form-label">Price</label>
     <input type="number"  name='price' class="form-control" id="productPrice" aria-describedby="productPrice">
   </div>
+            <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+<select class="form-select" name="category_id"  id="category" aria-label="Default select example">
+<!--            <option selected disabled value="">Open this select menu</option>-->
+
+            {% for Category in categories %}
+          <option value='{{Category.id}}'>{{Category.name}}</option>
+            {% endfor %}
+</select>
+            </div>
    <div class="mb-3">
     <label for="productPrice" class="form-label">InStock  </label>
        <input type="checkbox" name='instock' class="form-check-input" id="inStockCheckbox">

@@ -19,8 +19,7 @@ class Product(db.Model):
     updated_at = db.Column(db.DateTime, server_onupdate=db.func.now(), server_default=db.func.now())
 
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=True)
-
-
+    category = db.relationship('Categories', backref='products_list')
     def __str__(self):
         return f"{self.name}"
 
@@ -82,7 +81,7 @@ class Categories(db.Model):
         return  cls.query.all()
 
     @classmethod
-    def save_track(cls, request_data):
+    def save_category(cls, request_data):
         category  =cls(**request_data)
         db.session.add(category)
         db.session.commit()

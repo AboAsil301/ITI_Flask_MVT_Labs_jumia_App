@@ -20,12 +20,17 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{url_for('products.index')}}">Home</a>
         </li>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{{url_for('categories.index')}}">Categories</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{url_for('products.contact')}}">Contactus</a>
         </li>
            <li class="nav-item">
           <a class="nav-link" href="{{url_for('products.abouts')}}">Abouts</a>
         </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

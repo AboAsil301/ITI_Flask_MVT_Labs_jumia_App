@@ -22,6 +22,19 @@
     <label for="productPrice" class="form-label">InStock  </label>
        <input type="checkbox" name='instock' {% if product.instock %}checked{% endif %} class="form-check-input" id="inStockCheckbox">
   </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+<select class="form-select" name="category_id"  id="category" aria-label="Default select example">
+           {% if product.category %}
+            <option selected disabled value="">{{product.category.name}}</option>
+            {% else %}
+            <option selected disabled value="">Select Category</option>
+            {% endif %}
+            {% for Category in categories %}
+          <option value='{{Category.id}}'>{{Category.name}}</option>
+            {% endfor %}
+</select>
+            </div>
  <div class="mb-3">
     <label for="productImage" class="form-label">Current Image</label>
     <input type="text" name="current_image" id="productImage" value="{{product.image}}" class="form-control" readonly>

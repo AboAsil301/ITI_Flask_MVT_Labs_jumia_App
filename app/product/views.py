@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request,render_template,redirect, url_for
-from app.models import Product, db
+from app.models import Product,Categories, db
+
 import os
 from werkzeug.utils import secure_filename
 
@@ -42,7 +43,8 @@ def create():
             name=request.form['name'],
             description=request.form['description'],
             price=request.form['price'],
-            instock=request.form.get('instock') == 'on'
+            instock=request.form.get('instock') == 'on',
+            category_id=request.form['category_id'],
         )
 
 
@@ -65,7 +67,7 @@ def create():
         db.session.commit()
         return redirect(url_for('products.index'))
 
-    return render_template('products/create.html')
+    return render_template('products/create.html', categories=Categories.get_all_objects())
 
 
 
@@ -85,7 +87,7 @@ def product_show(id):
 @product_blueprint.route('edit/<int:id>', endpoint='edit')
 def product_edit(id):
     product = Product.get_specific_product(id)
-    return render_template('products/edit.html', product=product)
+    return render_template('products/edit.html', product=product,categories=Categories.get_all_objects())
 
 
 @product_blueprint.route('edit/<int:id>', methods=['GET', 'POST'], endpoint='update')
@@ -96,6 +98,7 @@ def update(id):
         product.description = request.form['description']
         product.price = request.form['price']
         product.instock = request.form.get('instock') == 'on'
+        product.category_id = request.form['category_id']
 
         # Check if a new image was uploaded
         if 'image' in request.files:
