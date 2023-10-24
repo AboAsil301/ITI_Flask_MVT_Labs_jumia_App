@@ -5,28 +5,38 @@
 {% block body %}
 <!-- Start Body -->
   <div class="container">
-    <div class="add-product pt-5 text-end">
+
+    <h2 class="py-3 m-0 mt-3 text-center text-bg-light" >List of Categories</h2>
+          <div class="add-product pt-5 text-end">
         <a href="{{url_for('categories.create')}}" class="fs-4 text-decoration-none " style="color: #5585b5;"><i class="fa-regular fa-square-plus"></i></a>
     </div>
-    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 pt-3 pb-5">
-      {% for category in categories %}
-      <div class="card border-0 mb-3 ">
-<!--            {% if category.image %}-->
-<!--              <img src="{{ url_for('static', filename='images/product/' + category.image) }}" class="card-img-top rounded-3 mb-2" height="370">-->
-<!--            {% else %}-->
-<!--              <img src="{{ url_for('static', filename='images/product/placeholder.png') }}" class="card-img-top rounded-3 mb-2" height="370">-->
-<!--            {% endif %}-->
-        <div class="card-body text-center p-0 ">
-            <h5 class="card-title">{{category.name}}</h5>
-            <div class="d-flex justify-content-around   ">
-                 <a href="{{url_for('categories.show', id=category.id)}}" style="color: #5585b5;"><i class="fa-solid fa-eye"></i></a>
-                <a href="{{url_for('categories.edit', id=category.id)}}" style="color: #5585b5;"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a href="{{url_for('categories.delete', id=category.id)}}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
-            </div>
-          </div>
-      </div>
-      {% endfor %}
-    </div>
+    <table class="table table-striped table-hover text-center mb-5">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Show</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{url_for('categories.show', id=category.id)}}" style="color: #5585b5;"><i class="fa-solid fa-eye"></i></a>
+                </td>
+                <td>
+                    <a href="{{url_for('categories.edit', id=category.id)}}" style="color: #5585b5;"><i class="fa-regular fa-pen-to-square"></i></a>
+                </td>
+                <td>
+                    <a href="{{url_for('categories.delete', id=category.id)}}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
   </div>
   <!-- End Body -->
 

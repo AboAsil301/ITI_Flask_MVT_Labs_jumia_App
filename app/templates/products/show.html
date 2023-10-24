@@ -45,7 +45,7 @@
         <hr />
           <div>
           <h5>Category</h5>
-          <p>{{product.category.name}}</p>
+            <a href="{{url_for('categories.show', id=product.category.id)}}" class="btn btn-info" >{{product.category.name}}</a>
         </div>
         <hr />
         <p> {{product.price}} $</p>

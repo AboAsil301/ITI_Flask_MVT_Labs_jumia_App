@@ -5,18 +5,31 @@
   <div class="container py-5">
     <div class="row mb-5">
       <!-- * Images * -->
-      <div class="col-lg-6 row">
-           {% for product in category.products %}
-          <div class="col-4 text-center">
-            <img src="{{ url_for('static', filename='images/product/'+product.image)}}" class="mb-2" width="96" alt="Product Image">
+      <div class="col-lg-9 row">
+          <div class="container">
+
+    <h2 class="py-3 m-0 mt-3 text-center text-bg-light" >List of Products in Category : {{category.name}}</h2>
+     <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 pt-3 pb-5">
+     {% for product in category.products %}
+      <div class="card border-0 mb-3 ">
+          <img src="{{ product.get_image_url }}" class="card-img-top rounded-3 mb-2" height="370">
+        <div class="card-body text-center p-0 ">
+            <h5 class="card-title">{{product.name}}</h5>
+            <div class="d-flex justify-content-around   ">
+                 <a href="{{product.get_show_url}}" style="color: #5585b5;"><i class="fa-solid fa-eye"></i></a>
+                <a href="{{product.get_edit_url}}" style="color: #5585b5;"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{{product.get_delete_url}}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+            </div>
           </div>
-          {% endfor %}
+      </div>
+      {% endfor %}
+ </div>
 
-
+  </div>
 
       </div>
       <!--  Details -->
-      <div class="col-lg-6 text-start px-5 mt-lg-0 mt-4">
+      <div class="col-lg-3 text-start px-5 mt-lg-0 mt-4">
         <h1 class="">{{category.name}}</h1>
         <hr />
         <div>

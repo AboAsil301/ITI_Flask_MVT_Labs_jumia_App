@@ -98,7 +98,12 @@ def update(id):
         product.description = request.form['description']
         product.price = request.form['price']
         product.instock = request.form.get('instock') == 'on'
-        product.category_id = request.form['category_id']
+
+        category_id = request.form.get('category_id')
+        if category_id is not None:
+            # Update the product's category ID
+            product.category_id = int(category_id)
+
 
         # Check if a new image was uploaded
         if 'image' in request.files:
